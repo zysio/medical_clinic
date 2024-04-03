@@ -13,6 +13,7 @@ namespace testApp.Service
     {
         Task<IEnumerable<Patient>> GetAllPatientsAsync();
         Patient AddPatient(PatientDto patientDto);
+        Patient DeletePatient(Patient p);
     }
 
     public class PatientService : IPatientService
@@ -39,6 +40,24 @@ namespace testApp.Service
             var address = new Address(patientDto.street, patientDto.city, patientDto.zip_code, patient.patient_id);
             _dbContext.Address.Add(address);
             _dbContext.SaveChanges();
+
+            return patient;
+        }
+
+        public Patient DeletePatient(Patient p)
+        {
+            var id = p.patient_id;
+            var patient = _dbContext.Patients.Find(id);
+            var address = _dbContext.Address.FirstOrDefault(a => a.patient_id == id);
+
+            if(address != null && patient != null)
+            {
+                _dbContext.Address.Remove(address);
+                _dbContext.SaveChanges();
+
+                _dbContext.Patients.Remove(patient);
+                _dbContext.SaveChanges();
+            }
 
             return patient;
         }

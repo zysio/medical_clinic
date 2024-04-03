@@ -30,5 +30,12 @@ namespace testApp.Controllers
             var patient = _patientService.AddPatient(patientDto);
             return Ok(patient);
         }
+
+        [HttpPost]
+        public IActionResult DeletePatientAndAddress([FromBody] Patient p)
+        {
+            var patient = _patientService.DeletePatient(p);
+            return Ok(patient);
+        }
     }
 }

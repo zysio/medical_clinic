@@ -11,13 +11,14 @@ namespace testApp.Models
         public int patient_id { get; set; }
         public string first_name { get; set; }
         public string last_name { get; set; }
-        public int PESEL { get; set; }
+        public string PESEL { get; set; }
+
 
         public Patient()
         {
-            
+
         }
-        public Patient(string firstName, string lastName, int pesel)
+        public Patient(string firstName, string lastName, string pesel)
         {
             this.first_name = firstName;
             this.last_name = lastName;

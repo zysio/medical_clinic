@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using testApp.Models;
 
 namespace testApp.Data
@@ -10,6 +11,6 @@ namespace testApp.Data
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Address> Address { get; set; }
 
-        
+
     }
 }

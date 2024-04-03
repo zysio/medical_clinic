@@ -24,3 +24,30 @@ input[type=number]{
 p{
     margin: 0;
 }
+body{
+    display: flex;
+}
+.body-container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+.input-group{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

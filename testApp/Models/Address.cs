@@ -15,7 +15,6 @@ namespace testApp.Models
         [ForeignKey(nameof(Patient))]
         public int patient_id { get; set; }
 
-
         public Address()
         {
             

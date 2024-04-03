@@ -6,24 +6,12 @@ import axios from "axios";
 
 const AddPatient = () => {
 
-    const [Patients, setPatients] = useState();
+
 
     const [errors, setErrors] = useState({})
     const [res, setRes] = useState({});
     
-    useEffect(() => {
-        const getPatients = () => {
-          axios.get('https://localhost:7047/api/patient/GetAllPatients').then(
-            response => {
-              setPatients(response.data)
-              console.log(response.data)
-            }
-          ).catch(err => {
-            console.log('Error while fetching data')
-          })
-        }
-        getPatients()
-      }, []);
+
 
 
 
@@ -59,10 +47,6 @@ const AddPatient = () => {
             return;
         }
 
-        if (formData.PESEL.trim().length !== 11) {
-            alert('PESEL must have 11 digits');
-            return;
-        }
 
         const zipCode = /^\d{2}-\d{3}$/;
         if (!zipCode.test(formData.zip_code.trim())) {
@@ -110,7 +94,7 @@ const AddPatient = () => {
                                 </label>
                                 <label>
                                     <p>PESEL</p>
-                                    <input type="number" name="PESEL" value={formData.PESEL} onChange={handleChange} />
+                                    <input type="text" name="PESEL" value={formData.PESEL} onChange={handleChange} />
                                 </label>
                                 <label>
                                     <p>Street</p>
