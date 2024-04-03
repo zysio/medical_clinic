@@ -1,0 +1,25 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttonsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    width: 650px;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+}
+.divButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    border: solid black;
+    
+}
+
+
+

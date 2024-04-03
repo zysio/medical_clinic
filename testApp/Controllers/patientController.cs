@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using testApp.Dto;
 using testApp.Models;
 using testApp.Service;
 
@@ -21,6 +22,13 @@ namespace testApp.Controllers
         {
             var patients = await _patientService.GetAllPatientsAsync();
             return Ok(patients);
+        }
+
+        [HttpPost]
+        public IActionResult AddPatient([FromBody] PatientDto patientDto)
+        {
+            var patient = _patientService.AddPatient(patientDto);
+            return Ok(patient);
         }
     }
 }
