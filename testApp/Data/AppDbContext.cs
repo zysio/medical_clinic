@@ -11,6 +11,12 @@ namespace testApp.Data
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Address> Address { get; set; }
 
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Patient>()
+                .HasOne(p => p.Address)
+                .WithOne()
+                .HasForeignKey<Patient>(p => p.address_id);
+        }
     }
 }

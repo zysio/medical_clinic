@@ -12,19 +12,16 @@ namespace testApp.Models
         public string city { get; set; }
         public string zip_code { get; set; }
 
-        [ForeignKey(nameof(Patient))]
-        public int patient_id { get; set; }
 
         public Address()
         {
             
         }
-        public Address(string street, string city, string zipCode, int patientId)
+        public Address(string street, string city, string zipCode)
         {
             this.street = street;
             this.city = city;
             this.zip_code = zipCode;
-            this.patient_id = patientId;
         }
     }
 }

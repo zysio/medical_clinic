@@ -49,9 +49,9 @@
     box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
 
-/* Stylowanie listy wyników */
+
 .input-group {
-    position: relative; /* Dodaj pozycję względną do kontenera */
+    position: relative; 
 }
 
 .search-results-list {
@@ -65,7 +65,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 300px;
     z-index: 1000;
-    top: calc(100% + 5px); /* Przesuń listę wyników poniżej inputu */
+    top: calc(100% + 5px); 
     left: 0;
 }
 

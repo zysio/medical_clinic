@@ -12,9 +12,9 @@ const DeletePatient = () => {
 
     const [Patients, setPatients] = useState();
     const [patient, setPatient] = useState();
-    const [searchTerm, setSearchTerm] = useState(''); // wybrany wynik z wyszukiwarki
-    const [searchResults, setSearchResults] = useState([]); // wyniki wyswietlane w wyszukiwarce
-    const [isListVisible, setListVisible] = useState(true); // stan do śledzenia widoczności listy
+    const [searchTerm, setSearchTerm] = useState(''); // selected result
+    const [searchResults, setSearchResults] = useState([]); // search result
+    const [isListVisible, setListVisible] = useState(true); // track list visibility
 
     const [errors, setErrors] = useState({});
     const [res, setRes] = useState({});
@@ -28,10 +28,9 @@ const DeletePatient = () => {
     const DeletePatient = async (e) => {
         e.preventDefault();
         console.log(patient)
-        const response = null
         if (Object.keys(errors).length === 0) {
             try {
-                response = await axios.post("https://localhost:7047/api/patient/DeletePatientAndAddress", patient);
+                const response = await axios.post("https://localhost:7047/api/patient/DeletePatientAndAddress", patient);
                 setRes(response.data);
 
             }
@@ -76,7 +75,7 @@ const DeletePatient = () => {
                 <div className="input-group">
                     <input
                         type="search"
-                        placeholder="Search patient by id"
+                        placeholder="Search patient by last name"
                         aria-describedby="button-addon1"
                         className=" serc"
                         value={searchTerm}
@@ -90,7 +89,9 @@ const DeletePatient = () => {
                                     <p className="list-element">First Name</p>
                                     <p className="list-element">Last Name</p>
                                 </div>
-                                {Patients.map((patient, index) => (
+                                {Patients.filter(patient =>
+                                 patient.last_name.toLowerCase().includes(searchTerm.toLowerCase()))
+                                 .map((patient, index) => (
                                 <li className="search-patient" key={index}
                                     onClick={() => {handleResultClick(patient.patient_id); handlePatient(patient);}}>
                                      <p className="list-element">{patient.patient_id}</p>

@@ -5,15 +5,9 @@ import axios from "axios";
 
 
 const AddPatient = () => {
-
-
-
+    
     const [errors, setErrors] = useState({})
     const [res, setRes] = useState({});
-    
-
-
-
 
       const [formData, setFormData] = useState({
         first_name: '',
