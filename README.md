@@ -17,11 +17,11 @@
 
 ### Launching
 
-1. Clone this repository to your local machine using: `git clone https://github.com/zysio/medical_clinic.git
+1. Clone this repository to your local machine using: `git clone https://github.com/zysio/medical_clinic.git`
 
 2. Setup PostgreSQL database
 
-3. Copy code from database/scheme.txt
+3. Copy code from `cd database/scheme.txt`
 
 4. Run the code in Query Tool
 
