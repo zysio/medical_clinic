@@ -35,12 +35,12 @@ namespace testApp.Service
         public Patient AddPatient(PatientDto patientDto)
         {
 
-            var address = new Address(patientDto.street, patientDto.city, patientDto.zip_code);
+            var address = new Address(patientDto.Street, patientDto.City, patientDto.Zip_code);
             _dbContext.Address.Add(address);
             _dbContext.SaveChanges();
 
 
-            var patient = new Patient(patientDto.first_name, patientDto.last_name, patientDto.PESEL, address.Id);
+            var patient = new Patient(patientDto.First_name, patientDto.Last_name, patientDto.PESEL, address.Id);
             _dbContext.Patients.Add(patient);
             _dbContext.SaveChanges();
 
@@ -50,21 +50,21 @@ namespace testApp.Service
         }
         public string EditPatient(PatientWithIdDto patientDto)
         {
-            var patient = _dbContext.Patients.Find(patientDto.patient_id);
+            var patient = _dbContext.Patients.Find(patientDto.Patient_id);
             var address = _dbContext.Address.Find(patient.Address_id);
             if (patient != null)
             {
-                patient.First_name = patientDto.first_name;
-                patient.Last_name = patientDto.last_name;
+                patient.First_name = patientDto.First_name;
+                patient.Last_name = patientDto.Last_name;
                 patient.PESEL = patientDto.PESEL;
             }
             else return null;
 
             if(address != null)
             {
-                address.Street = patientDto.street;
-                address.City = patientDto.city;
-                address.Zip_code = patientDto.zip_code;
+                address.Street = patientDto.Street;
+                address.City = patientDto.City;
+                address.Zip_code = patientDto.Zip_code;
             }
 
             _dbContext.SaveChanges();

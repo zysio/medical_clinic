@@ -1,0 +1,48 @@
+-- Table: public.address
+
+-- DROP TABLE IF EXISTS public.address;
+-- DROP sequence IF EXISTS address_id_seq;
+
+CREATE SEQUENCE address_id_seq;
+
+CREATE TABLE IF NOT EXISTS public.address
+(
+    street text COLLATE pg_catalog."default",
+    city text COLLATE pg_catalog."default",
+    zip_code text COLLATE pg_catalog."default",
+    id integer NOT NULL DEFAULT nextval('address_id_seq'::regclass),
+    CONSTRAINT address_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.address
+    OWNER to postgres;
+
+
+-- Table: public.patient
+
+-- DROP TABLE IF EXISTS public.patient;
+-- DROP sequence IF exists patient_patient_id_seq
+
+CREATE SEQUENCE IF NOT EXISTS patient_patient_id_seq;
+
+CREATE TABLE IF NOT EXISTS public.patient
+(
+    first_name text COLLATE pg_catalog."default",
+    last_name text COLLATE pg_catalog."default",
+    patient_id integer NOT NULL DEFAULT nextval('patient_patient_id_seq'::regclass),
+    "PESEL" text COLLATE pg_catalog."default",
+    address_id integer,
+    CONSTRAINT patient_pkey PRIMARY KEY (patient_id),
+    CONSTRAINT fk_address_id FOREIGN KEY (address_id)
+        REFERENCES public.address (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.patient
+    OWNER to postgres;

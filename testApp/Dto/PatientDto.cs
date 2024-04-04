@@ -2,11 +2,11 @@
 {
     public class PatientDto
     {
-        public string first_name { get; set; }
-        public string last_name { get; set;}
+        public string First_name { get; set; }
+        public string Last_name { get; set;}
         public string PESEL { get; set; }
-        public string street { get; set; }
-        public string city { get; set; }
-        public string zip_code { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string Zip_code { get; set; }
     }
 }
