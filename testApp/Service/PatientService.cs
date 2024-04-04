@@ -40,7 +40,7 @@ namespace testApp.Service
             _dbContext.SaveChanges();
 
 
-            var patient = new Patient(patientDto.first_name, patientDto.last_name, patientDto.PESEL, address.id);
+            var patient = new Patient(patientDto.first_name, patientDto.last_name, patientDto.PESEL, address.Id);
             _dbContext.Patients.Add(patient);
             _dbContext.SaveChanges();
 
@@ -51,20 +51,20 @@ namespace testApp.Service
         public string EditPatient(PatientWithIdDto patientDto)
         {
             var patient = _dbContext.Patients.Find(patientDto.patient_id);
-            var address = _dbContext.Address.Find(patient.address_id);
+            var address = _dbContext.Address.Find(patient.Address_id);
             if (patient != null)
             {
-                patient.first_name = patientDto.first_name;
-                patient.last_name = patientDto.last_name;
+                patient.First_name = patientDto.first_name;
+                patient.Last_name = patientDto.last_name;
                 patient.PESEL = patientDto.PESEL;
             }
             else return null;
 
             if(address != null)
             {
-                address.street = patientDto.street;
-                address.city = patientDto.city;
-                address.zip_code = patientDto.zip_code;
+                address.Street = patientDto.street;
+                address.City = patientDto.city;
+                address.Zip_code = patientDto.zip_code;
             }
 
             _dbContext.SaveChanges();
@@ -75,9 +75,9 @@ namespace testApp.Service
 
         public Patient DeletePatient(Patient p)
         {
-            var id = p.patient_id;
+            var id = p.Patient_id;
             var patient = _dbContext.Patients.Find(id);
-            var address = _dbContext.Address.Find(patient.address_id);
+            var address = _dbContext.Address.Find(patient.Address_id);
 
             if(address != null)
             {

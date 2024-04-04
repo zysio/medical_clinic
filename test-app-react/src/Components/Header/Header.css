@@ -1,0 +1,33 @@
+body{
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+.header-body {
+    display: flex;
+    left: 0;
+    width: 100%;
+    background-color: rgb(41, 38, 38);
+    border-bottom: 1px solid rgb(75, 68, 68);
+    color: white;
+    text-align: center;
+}
+.home-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    border-right: 3px solid black;
+}
+.home-button:hover{
+    background-color: rgb(59, 59, 59);
+}
+.string-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}

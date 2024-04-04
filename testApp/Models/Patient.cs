@@ -8,13 +8,17 @@ namespace testApp.Models
         
     {
         [Key]
-        public int patient_id { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
+        [Column("patient_id")]
+        public int Patient_id { get; set; }
+        [Column("first_name")]
+        public string First_name { get; set; }
+        [Column("last_name")]
+        public string Last_name { get; set; }
         public string PESEL { get; set; }
 
         [ForeignKey("Address")]
-        public int address_id { get; set; }
+        [Column("address_id")]
+        public int Address_id { get; set; }
 
         public Address Address { get; set; }
 
@@ -25,10 +29,10 @@ namespace testApp.Models
         }
         public Patient(string firstName, string lastName, string pesel, int addressid)
         {
-            this.first_name = firstName;
-            this.last_name = lastName;
+            this.First_name = firstName;
+            this.Last_name = lastName;
             this.PESEL = pesel;
-            this.address_id = addressid;
+            this.Address_id = addressid;
         }
     }
 }

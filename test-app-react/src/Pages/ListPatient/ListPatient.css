@@ -1,0 +1,13 @@
+.list-patients-container{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: start;
+    align-items: center;
+    background: linear-gradient(to bottom right, rgb(20, 20, 20) 50%, rgb(29, 31, 29) 50%);
+}
+.list-cont{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}

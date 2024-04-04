@@ -1,0 +1,13 @@
+th{
+    padding: 10px;
+    border: 1px solid rgb(221, 220, 220);
+    border-collapse: collapse;
+}
+th:hover{
+    cursor: pointer;
+}
+td{
+    padding: 10px;
+    border: 1px solid rgb(146, 145, 145);
+    border-collapse: collapse;
+}

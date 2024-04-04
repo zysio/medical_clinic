@@ -5,21 +5,40 @@ body{
 }
 .buttonsContainer{
     display: flex;
+    flex: 1;
     flex-wrap: wrap;
-    width: 650px;
     gap: 100px;
     justify-content: center;
     align-items: center;
+    margin: 0;
 }
 .divButton{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 250px;
-    height: 250px;
-    border: solid black;
-    
+    width: 350px;
+    height: 150px;
+    border: solid rgb(129, 129, 129);
+    text-decoration: none;
+    color: rgb(185, 184, 184);
 }
-
+.divButton:hover{
+    background-color:rgb(110, 110, 110);
+    border: solid rgb(214, 214, 214);
+}
+.buttonWrapper{
+    display: flex;
+    flex-direction: column;
+    
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, rgb(20, 20, 20) 50%, rgb(29, 31, 29) 50%);
+}
+.home-cont{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
 
 

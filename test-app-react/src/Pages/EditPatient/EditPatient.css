@@ -1,20 +1,28 @@
 .input-group {
-    position: relative; 
+
+}
+.edit-cont{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background: linear-gradient(to bottom right, rgb(20, 20, 20) 50%, rgb(29, 31, 29) 50%);
 }
 
 .search-results-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
     position: absolute;
+    padding: 0;
+    margin: 0 auto;
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 300px;
     z-index: 1000;
-    top: calc(100% + 5px); 
-    left: 0;
+    background: black;
 }
 
 .search-results-list li {
@@ -36,4 +44,44 @@
 .search-patient{
     display: flex;
     justify-content: space-between;
+}
+.edit-patient-container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.dataRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 70px;
+
+}
+.dataName{
+    font-size: 20px;
+    font-weight: 600;
+}
+.data{
+    display: flex;
+    gap: 10px;
+    font-size: 20px;
+}
+.dataRow input{
+    font-size: 20px;
+    width: 97.8%;
+}
+.deleteButtons{
+    width: 150px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.userDataContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    min-height: 312px;
 }

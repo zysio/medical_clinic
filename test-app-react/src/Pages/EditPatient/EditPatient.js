@@ -2,8 +2,8 @@ import "./EditPatient.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
-
+import Header from "../../Components/Header/Header"
+import Footer from "../../Components/Footer/Footer"
 
 const EditPatient = () => {
     const navigate = useNavigate();
@@ -103,38 +103,42 @@ const EditPatient = () => {
 
     return (
         <>
-        
-        <div className="input-group">
-                    <input
-                        type="search"
-                        placeholder="Search patient by Last Name"
-                        aria-describedby="button-addon1"
-                        className=" serc"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        onFocus={() => setListVisible(true)}
-                        />
-                        {isListVisible && searchTerm && (
-                            <ul className="search-results-list">
-                                <div className="search-patient">
-                                    <p className="list-element">ID</p>
-                                    <p className="list-element">First Name</p>
-                                    <p className="list-element">Last Name</p>
-                                </div>
-                                {patients.filter(patient =>
-                                 patient.last_name.toLowerCase().includes(searchTerm.toLowerCase()))
-                                 .map((patient, index) => (
-                                <li className="search-patient" key={index}
-                                    onClick={() => {handlePatient(patient);}}>
-                                     <p className="list-element">{patient.patient_id}</p>
-                                     <p className="list-element">{patient.first_name}</p>
-                                     <p className="list-element">{patient.last_name}</p>
-                                </li>))}
-                            </ul>)}
-                </div>
-                {patient && (
+        <div className="edit-patient-container">
+            <Header string={"Edit Patient"} />
+            <div className="edit-cont">
+            <div className="input-group">
                 <div>
-                    <div className="userDataContainer">
+                        <input
+                            type="search"
+                            placeholder="Search patient by Last Name"
+                            aria-describedby="button-addon1"
+                            className=" serc"
+                            value={patient && patient.last_name}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onFocus={() => setListVisible(true)}
+                            />
+                            {isListVisible && searchTerm && (
+                                <ul className="search-results-list">
+                                    <div className="search-patient">
+                                        <p className="list-element">ID</p>
+                                        <p className="list-element">First Name</p>
+                                        <p className="list-element">Last Name</p>
+                                    </div>
+                                    {patients.filter(patient =>
+                                    patient.last_name.toLowerCase().includes(searchTerm.toLowerCase()))
+                                    .map((patient, index) => (
+                                    <li className="search-patient" key={index}
+                                        onClick={() => {handlePatient(patient);}}>
+                                        <p className="list-element">{patient.patient_id}</p>
+                                        <p className="list-element">{patient.first_name}</p>
+                                        <p className="list-element">{patient.last_name}</p>
+                                    </li>))}
+                                </ul>)}
+                    </div>
+            </div>
+                {patient && (
+            <div>
+                <div className="userDataContainer">
                         <span className="break"></span>
                         <h3>Personal Data</h3>
                         <div className="userDataInfo">
@@ -251,18 +255,21 @@ const EditPatient = () => {
                         {isEditing ? (
                             <>
                                 <div className="openedButtons">
-                                    <button onClick={editPersonalData}>Save</button>
-                                    <button onClick={() => { setIsEditing(false) }}>Back</button>
+                                    <button className="deleteButtons" onClick={editPersonalData}>Save</button>
+                                    <button className="deleteButtons" onClick={() => { setIsEditing(false) }}>Back</button>
                                 </div>
                                 
                             </>
                         ) : (
-                            <button onClick={handleEditClick}>Edit</button>
+                            <button className="deleteButtons" onClick={handleEditClick}>Edit</button>
                         )}
                         {dataEditResponseStatus && <span>{dataEditResponseStatus}</span>}
                     </div>
                 </div>
                 )}
+                            </div>
+                <Footer/>
+            </div>
         </>
     )
 }

@@ -7,10 +7,14 @@ namespace testApp.Models
     public class Address
     {
         [Key]
-        public int id { get; set; }
-        public string street { get; set; }
-        public string city { get; set; }
-        public string zip_code { get; set; }
+        [Column("id")]
+        public int Id { get; set; }
+        [Column("street")]
+        public string Street { get; set; }
+        [Column("city")]
+        public string City { get; set; }
+        [Column("zip_code")]
+        public string Zip_code { get; set; }
 
 
         public Address()
@@ -19,9 +23,9 @@ namespace testApp.Models
         }
         public Address(string street, string city, string zipCode)
         {
-            this.street = street;
-            this.city = city;
-            this.zip_code = zipCode;
+            this.Street = street;
+            this.City = city;
+            this.Zip_code = zipCode;
         }
     }
 }

@@ -4,7 +4,8 @@ import axios from "axios";
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from "react-router-dom";
-
+import Header from "../../Components/Header/Header"
+import Footer from "../../Components/Footer/Footer"
 
 const DeletePatient = () => {
 
@@ -42,6 +43,11 @@ const DeletePatient = () => {
         else {
             console.log('Form has errors, cannot submit.');
         }
+        setIsPopupOpen(!isPopupOpen);
+        setPatient("");
+        setSearchTerm("");
+        fetchData();
+        navigate('/DeletePatient');
     }
 
     useEffect(() => {
@@ -56,29 +62,45 @@ const DeletePatient = () => {
           })
         }
         getPatients()
-      }, []);
+      }, [], [patient]);
 
       const handleResultClick = (clickedTerm) => {
         setSearchTerm(clickedTerm);
         setListVisible(false);
     };
 
+    const fetchData = async () => {
+        try {
+            const response = await axios.get("https://localhost:7047/api/patient/GetAllPatients");
+            setPatients(response.data);
+        }
+        catch (error) {
+            console.error("Error while fetching data: ", error);
+        }
+    }
+
+
     const handlePatient = (clickedTerm) => {
         setPatient(clickedTerm);
+        {patient &&
+            setSearchTerm(patient.last_name)}
         console.log(patient)
+        setListVisible(false);
     };
-
 
     return (
         <>
-            <div className="body-container">
+        <div className="edit-patient-container">
+            <Header string={"Delete Patient"} />
+            <div className="edit-cont">
                 <div className="input-group">
+                    <div>
                     <input
                         type="search"
                         placeholder="Search patient by last name"
                         aria-describedby="button-addon1"
                         className=" serc"
-                        value={searchTerm}
+                        value={patient && patient.last_name !== '' ? patient.last_name : searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         onFocus={() => setListVisible(true)}
                         />
@@ -93,22 +115,51 @@ const DeletePatient = () => {
                                  patient.last_name.toLowerCase().includes(searchTerm.toLowerCase()))
                                  .map((patient, index) => (
                                 <li className="search-patient" key={index}
-                                    onClick={() => {handleResultClick(patient.patient_id); handlePatient(patient);}}>
+                                    onClick={() => {handlePatient(patient);}}>
                                      <p className="list-element">{patient.patient_id}</p>
                                      <p className="list-element">{patient.first_name}</p>
                                      <p className="list-element">{patient.last_name}</p>
                                 </li>))}
                             </ul>)}
-                </div>
+                            </div>
+                    </div>
                 <div>
                 {patient &&(
                     <>
-                        <p>{patient.first_name}</p>
-                        <p>{patient.last_name}</p>
-                        <p>{patient.pesel}</p>
+                    <div className="data-storage">
+                        <div className="data-container">
+                            <p className="data-header">Patient id:</p>
+                            <p>{patient.patient_id}</p>
+                        </div>
+                        <div className="data-container">
+                            <p className="data-header">First name:</p>
+                            <p>{patient.first_name}</p>
+                        </div>
+                        <div className="data-container">
+                            <p className="data-header">Last name:</p>
+                            <p>{patient.last_name}</p>
+                        </div>
+                        <div className="data-container">
+                            <p className="data-header">PESEL:</p>
+                            <p>{patient.pesel}</p>
+                        </div>
+                        <div className="data-container">
+                            <p className="data-header">City:</p>
+                            <p>{patient.address.city}</p>
+                        </div>
+                        <div className="data-container">
+                            <p className="data-header">Street:</p>
+                            <p>{patient.address.street}</p>
+                        </div>
+                        <div className="data-container">
+                            <p className="data-header">Zip-code:</p>
+                            <p>{patient.address.zip_code}</p>
+                        </div>
+                        <button className="delete-button" onClick={togglePopup}>Delete Patient</button>
+                    </div>
                     </>
                 )}
-                <button onClick={togglePopup}>Delete Patient</button>
+            </div>
 
                 {isPopupOpen && (
                     <div className="overlay">
@@ -117,20 +168,16 @@ const DeletePatient = () => {
                                 <h2>Delete Patient</h2>
                                 <p>Are you sure?</p>
                                 <div className="popupButtons">
-                                    <button onClick={DeletePatient}>Delete</button>
-                                    <button onClick={togglePopup}>Back</button>
+                                    <button className="pop-button" onClick={DeletePatient}>Delete</button>
+                                    <button className="pop-button" onClick={togglePopup}>Back</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 )}
                 </div>
-
-
-            </div>
-
-                
-
+                <Footer />
+            </div>  
         </>
     )
 }

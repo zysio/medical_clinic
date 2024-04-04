@@ -13,9 +13,8 @@
   
   .popup {
     position: relative;
-    background-color: white;
+    background-color: rgb(95, 95, 95);
     padding: 55px 40px 55px 40px;
-    border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
@@ -28,6 +27,9 @@
   
   .popup-content {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
   
   .popup button {
@@ -51,22 +53,20 @@
 
 
 .input-group {
-    position: relative; 
+    
 }
-
 .search-results-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    z-index: 1000;
-    top: calc(100% + 5px); 
-    left: 0;
+  list-style: none;
+  position: absolute;
+  padding: 0;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  z-index: 1000;
+  background: black;
 }
 
 .search-results-list li {
@@ -88,4 +88,40 @@
 .search-patient{
     display: flex;
     justify-content: space-between;
+}
+.body-container{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.data-container{
+  display: flex;
+  gap: 50px;
+  justify-content: space-between;
+}
+.data-storage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  font-size: 20px;
+}
+.delete-button{
+  width: 150px;
+  height: 30px;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.data-header{
+  font-weight: 600;
+}
+.pop-button{
+  width: 100px;
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 10px;
+  cursor: pointer;
 }

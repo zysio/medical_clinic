@@ -1,6 +1,8 @@
 import "./AddPatient.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Header from "../../Components/Header/Header"
+import Footer from "../../Components/Footer/Footer"
 
 
 
@@ -74,41 +76,46 @@ const AddPatient = () => {
         });
     }
     return (
-        <>
-        <form onSubmit={handleSubmit}>
-                        <div className="formWrapper">
-                            <div className="formInputs">
-                                <label>
-                                    <p>First Name</p>
-                                    <input type="text" name="first_name" value={formData.first_name} onChange={handleChange} />
-                                </label>
-                                <label>
-                                    <p>Last Name</p>
-                                    <input type="text" name="last_name" value={formData.last_name} onChange={handleChange} />
-                                </label>
-                                <label>
-                                    <p>PESEL</p>
-                                    <input type="text" name="PESEL" value={formData.PESEL} onChange={handleChange} />
-                                </label>
-                                <label>
-                                    <p>Street</p>
-                                    <input type="text" name="street" value={formData.street} onChange={handleChange} />
-                                </label>
-                                <label>
-                                    <p>City</p>
-                                    <input type="text" name="city" value={formData.city} onChange={handleChange} />
-                                </label>
-                                <label>
-                                    <p>Zip-code</p>
-                                    <input type="text" name="zip_code" value={formData.zip_code} onChange={handleChange} />
-                                </label>
+    <>
+        <div className="add-patient-body">
+            <Header string={"Add Patient"} />
+            <form className="add-form" onSubmit={handleSubmit}>
+                            <div className="formWrapper">
+                                <div className="formInputs">
+                                    <label>
+                                        <p>First Name</p>
+                                        <input type="text" name="first_name" value={formData.first_name} onChange={handleChange} />
+                                    </label>
+                                    <label>
+                                        <p>Last Name</p>
+                                        <input type="text" name="last_name" value={formData.last_name} onChange={handleChange} />
+                                    </label>
+                                    <label>
+                                        <p>PESEL</p>
+                                        <input type="text" name="PESEL" value={formData.PESEL} onChange={handleChange} />
+                                    </label>
+                                    <label>
+                                        <p>Street</p>
+                                        <input type="text" name="street" value={formData.street} onChange={handleChange} />
+                                    </label>
+                                    <label>
+                                        <p>City</p>
+                                        <input type="text" name="city" value={formData.city} onChange={handleChange} />
+                                    </label>
+                                    <label>
+                                        <p>Zip-code</p>
+                                        <input type="text" name="zip_code" value={formData.zip_code} onChange={handleChange} />
+                                    </label>
+                                </div>
+                                <div className="formButton">
+                                    <button type="submit">Add Patient</button>
+                                </div>
                             </div>
-                            <div className="formButton">
-                                <button type="submit">Add Patient</button>
-                            </div>
-                        </div>
-                    </form>
+                </form>
+                <Footer />
+            </div>
         </>
+           
     )
 }
 export default AddPatient;

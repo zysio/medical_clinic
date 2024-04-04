@@ -16,7 +16,7 @@ namespace testApp.Data
             modelBuilder.Entity<Patient>()
                 .HasOne(p => p.Address)
                 .WithOne()
-                .HasForeignKey<Patient>(p => p.address_id);
+                .HasForeignKey<Patient>(p => p.Address_id);
         }
     }
 }
