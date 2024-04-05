@@ -31,7 +31,8 @@ const EditPatient = () => {
 
       const handlePatient = (clickedTerm) => {
         setPatient(clickedTerm);
-        console.log(patient)
+        {patient &&
+            setSearchTerm(patient.last_name)}
         setListVisible(false);
     };
 
@@ -98,8 +99,23 @@ const EditPatient = () => {
         }
         catch (error) {
         }
+
+        setPatient("");
+        setSearchTerm("");
+        fetchData();
+        alert("Data has been chaned")
+        navigate('/EditPatient');
     }
 
+    const fetchData = async () => {
+        try {
+            const response = await axios.get("https://localhost:7047/api/patient/GetAllPatients");
+            setPatients(response.data);
+        }
+        catch (error) {
+            console.error("Error while fetching data: ", error);
+        }
+    }
 
     return (
         <>
@@ -113,7 +129,7 @@ const EditPatient = () => {
                             placeholder="Search patient by Last Name"
                             aria-describedby="button-addon1"
                             className=" serc"
-                            value={patient && patient.last_name}
+                            value={patient && patient.last_name !== '' ? patient.last_name : searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
                             onFocus={() => setListVisible(true)}
                             />

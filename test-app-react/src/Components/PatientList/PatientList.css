@@ -1,4 +1,5 @@
 th{
+    font-size: 20px;
     padding: 10px;
     border: 1px solid rgb(221, 220, 220);
     border-collapse: collapse;
@@ -7,6 +8,7 @@ th:hover{
     cursor: pointer;
 }
 td{
+    font-size: 18px;
     padding: 10px;
     border: 1px solid rgb(146, 145, 145);
     border-collapse: collapse;

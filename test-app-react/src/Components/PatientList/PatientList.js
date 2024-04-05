@@ -6,11 +6,10 @@ function PatientList({ patients }) {
   const [sortBy, setSortBy] = useState(null);
 
   const handleSort = (key) => {
+      // check if key is the same
     if (sortBy === key) {
-      // Jeśli sortujemy już po tym kluczu, zmień kierunek sortowania
       setSortBy((prevSortBy) => (prevSortBy.startsWith('-') ? key : `-${key}`));
     } else {
-      // Jeśli sortujemy po innym kluczu, ustaw ten klucz jako nowy klucz sortowania
       setSortBy(key);
     }
   };
@@ -23,13 +22,12 @@ function PatientList({ patients }) {
     const propA = getNestedPropertyValue(a, sortBy);
     const propB = getNestedPropertyValue(b, sortBy);
   
-    // Sprawdź, czy jedna z wartości jest undefined
+    // check if one of fields is undefined
     if (propA === undefined || propB === undefined) {
-      // Jeśli któraś z wartości jest undefined, umieść ją na końcu sortowania
       return propA === undefined ? 1 : -1;
     }
   
-    // Obsługa sortowania dla różnych typów atrybutów
+    
     if (typeof propA === 'string') {
       return sortBy.startsWith('-') ? propB.localeCompare(propA) : propA.localeCompare(propB);
     } else {

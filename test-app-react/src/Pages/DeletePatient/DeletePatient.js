@@ -47,6 +47,7 @@ const DeletePatient = () => {
         setPatient("");
         setSearchTerm("");
         fetchData();
+        alert("Patient has beed deleted")
         navigate('/DeletePatient');
     }
 
@@ -62,7 +63,7 @@ const DeletePatient = () => {
           })
         }
         getPatients()
-      }, [], [patient]);
+      }, []);
 
       const handleResultClick = (clickedTerm) => {
         setSearchTerm(clickedTerm);

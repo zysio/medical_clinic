@@ -21,7 +21,7 @@
 
 2. Setup PostgreSQL database
 
-3. Copy code from `cd database/scheme.txt`
+3. Copy code from `./database/scheme.txt`
 
 4. Run the code in Query Tool
 

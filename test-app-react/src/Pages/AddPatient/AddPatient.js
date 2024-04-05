@@ -43,12 +43,17 @@ const AddPatient = () => {
             return;
         }
 
+        if (formData.PESEL.trim().length !== 11) {
+            alert('PESEL must have 11 digits');
+            return;
+        }
 
         const zipCode = /^\d{2}-\d{3}$/;
         if (!zipCode.test(formData.zip_code.trim())) {
             alert('wrong zip-code. syntax: XX-XXX');
             return;
         }
+   
 
         //Adding patient
         console.log(formData)
@@ -92,7 +97,7 @@ const AddPatient = () => {
                                     </label>
                                     <label>
                                         <p>PESEL</p>
-                                        <input type="text" name="PESEL" value={formData.PESEL} onChange={handleChange} />
+                                        <input type="number" name="PESEL" value={formData.PESEL} onChange={handleChange} />
                                     </label>
                                     <label>
                                         <p>Street</p>
@@ -108,12 +113,12 @@ const AddPatient = () => {
                                     </label>
                                 </div>
                                 <div className="formButton">
-                                    <button type="submit">Add Patient</button>
+                                    <button className="deleteButtons" type="submit">Add Patient</button>
                                 </div>
                             </div>
                 </form>
                 <Footer />
-            </div>
+        </div>
         </>
            
     )
